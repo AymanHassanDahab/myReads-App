@@ -8,8 +8,9 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 ## TL;DR
 
 To get started developing right away:
-
+- Get to the correct path (stater) file with `cd "starter"`
 - install all project dependencies with `npm install`
+- install all project dependencies with `npm install react-router-dom`
 - start the development server with `npm start`
 
 ## What You're Getting
@@ -33,10 +34,10 @@ To get started developing right away:
     │   └── arrow-drop-down.svg
     ├── index.css # Global styles. You probably won't need to change anything here.
     ├── index.js # You should not need to modify this file. It is used for DOM rendering only.
-    └── components # Helpful images for your app. Use at your discretion.
+    └── components
         ├── Book.js
         ├── BookShelf.js
-        ├── Shelves.js
+        ├── Shelves.js 
         └── SearchPage.js
 ```
 
@@ -98,10 +99,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
-
-
-
-// 1- Get to the correct path (stater) file
-// 2- Run (npm install)
-// 3- Run (npm install react-router-dom)
-// 4- Run (npm start)
