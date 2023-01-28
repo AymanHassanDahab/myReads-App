@@ -44,12 +44,12 @@ function App() {
                     <Shelves booksFromAPI={books} updateBookShelf={updateShelf} />
                     {/* SEARCH BUTTON */} 
                     <div className="open-search">
-                        <Link className="open-search" to="/SearchPage"></Link>
+                        <Link className="open-search" to="/search"></Link>
                     </div>
                 </div>
             } />
             
-            <Route path='/SearchPage' element={<SearchPage updateBookShelf={updateShelf} booksFromAPI={books} />} />
+            <Route path='/search' element={<SearchPage updateBookShelf={updateShelf} booksFromAPI={books} />} />
         </Routes>
     </div>
   );
