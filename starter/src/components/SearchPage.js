@@ -17,13 +17,14 @@ const SearchPage = ({updateBookShelf, booksFromAPI}) => {
                     if (dataOutput.error) {
                         setSearchedBook([])
                     } else {              
-                        setSearchedBook(dataOutput.map(setSearchedBook => {
+                        setSearchedBook(dataOutput.map(setSearchBook => {
                             booksFromAPI.forEach((book) => {
                                 if (searchedBook.title === book.title) {
-                                    searchedBook.shelf = book.shelf
+                                     console.log(book.shelf)
+                                     searchedBook.shelf = book.shelf;
                                 }                                  
                             });
-                            return setSearchedBook
+                            return setSearchBook
                         })
                     )}
                 })   
@@ -43,7 +44,7 @@ const SearchPage = ({updateBookShelf, booksFromAPI}) => {
         <div className="search-books">
             <div className="search-books-bar">
                 <Link to="/">
-                    <button className="close-search" >Close</button>
+                    <button className="close-search" onClick={() => BooksAPI.update(searchedBook, searchedBook.shelf)}>Close</button>
                 </Link>
                 <div className="search-books-input-wrapper">
                     <input 
