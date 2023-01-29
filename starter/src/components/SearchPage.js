@@ -16,17 +16,15 @@ const SearchPage = ({updateBookShelf, booksFromAPI}) => {
                 await BooksAPI.search(query).then((dataOutput) => {
                     if (dataOutput.error) {
                         setSearchedBook([])
-                    } else {              
-                        setSearchedBook(dataOutput.map(setSearchBook => {
-                            booksFromAPI.forEach((book) => {
-                                if (searchedBook.title === book.title) {
-                                     console.log(book.shelf)
-                                     searchedBook.shelf = book.shelf;
-                                }                                  
-                            });
-                            return setSearchBook
-                        })
-                    )}
+                    } else {  
+                        setSearchedBook(dataOutput.map(bookExistOnShelf => {
+                            let possibleBookExistOnShelf = booksFromAPI.find(book => book.id === bookExistOnShelf.id)
+                            if (possibleBookExistOnShelf) {
+                                bookExistOnShelf.shelf = possibleBookExistOnShelf.shelf;
+                            }
+                            return bookExistOnShelf;
+                        }));
+                    }
                 })   
             }
         } 
@@ -38,13 +36,13 @@ const SearchPage = ({updateBookShelf, booksFromAPI}) => {
         return() => {
             setSearchedBook([]);
         }
-    }, [query])
+    }, [query]);
 
     return (
         <div className="search-books">
             <div className="search-books-bar">
                 <Link to="/">
-                    <button className="close-search" onClick={() => BooksAPI.update(searchedBook, searchedBook.shelf)}>Close</button>
+                    <button className="close-search">Close</button>
                 </Link>
                 <div className="search-books-input-wrapper">
                     <input 
