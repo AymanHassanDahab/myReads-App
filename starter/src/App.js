@@ -18,17 +18,10 @@ function App() {
 
   // Update Shelf Of Books Category
   const updateShelf = (bookToChange, newShelf) => { 
-      setBooks( 
-          books.map(b => {
-              if (b.id === bookToChange.id) {
-                bookToChange.shelf = newShelf;
-                return bookToChange;
-              } else {
-                return b;
-              }
-          })
-      );
-      BooksAPI.update(bookToChange, newShelf)
+      BooksAPI.update(bookToChange, newShelf).then(() => {
+        bookToChange.shelf = newShelf
+        setBooks(books.filter(b => b.id !== bookToChange.id).concat(bookToChange))
+      });
   }
   
   return (
